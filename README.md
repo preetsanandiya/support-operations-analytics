@@ -79,4 +79,4 @@ The report was opened and refreshed in Power BI Desktop; its figures match the n
 
 ---
 Built by **Preet Sanandiya** · M.S. Information Systems (Business Analytics & Finance), Cal State Fullerton ·
-[LinkedIn](https://www.linkedin.com/in/preetsanandiya)
+[LinkedIn](https://www.linkedin.com/in/preetsanandiya) · See also: [Month-End Close & Reconciliation](https://github.com/preetsanandiya/month-end-close-reconciliation)
