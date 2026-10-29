@@ -1,0 +1,8 @@
+relationship d607ec02-fcb3-5a52-a06e-a163afc8ab51
+	fromColumn: Tickets.created_date
+	toColumn: dim_date.Date
+
+relationship d5919f77-5a80-5fb6-befd-35ad98346b9b
+	fromColumn: Tickets.agent_id
+	toColumn: Agents.agent_id
+

@@ -1,0 +1,5 @@
+priority,sla_target_hours,first_response_target_min
+P1,4,15
+P2,8,30
+P3,24,60
+P4,72,240

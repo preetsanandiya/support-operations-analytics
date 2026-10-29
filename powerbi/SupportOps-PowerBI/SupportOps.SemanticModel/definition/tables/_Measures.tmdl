@@ -1,0 +1,234 @@
+table _Measures
+	lineageTag: 9fc9ad04-3d39-5df8-b9fa-019966b6b7ac
+
+	measure 'Ticket Count' = COUNTROWS ( Tickets )
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 952acd99-fb20-5429-aadf-83a9b9219fcd
+
+	measure 'Agent Hours' = DIVIDE ( SUM ( Tickets[handle_time_min] ), 60 )
+		formatString: #,0
+		displayFolder: Volume
+		lineageTag: 3b6616da-2e88-5c40-befd-53a68180fa11
+
+	measure 'SLA %' = DIVIDE ( SUM ( Tickets[sla_met] ), [Ticket Count] )
+		formatString: 0.0%
+		displayFolder: Service
+		lineageTag: 6e7ca760-b816-57cf-be52-7c1fbeb9790b
+
+	measure 'Breach %' = 1 - [SLA %]
+		formatString: 0.0%
+		displayFolder: Service
+		lineageTag: e04e1ca2-05de-5e9f-9a1a-442548a8276d
+
+	measure 'FCR %' = DIVIDE ( SUM ( Tickets[first_contact_resolved] ), [Ticket Count] )
+		formatString: 0.0%
+		displayFolder: Service
+		lineageTag: f11e62c1-0a29-5835-8ff1-54f34870e68a
+
+	measure 'Reopen %' = DIVIDE ( SUM ( Tickets[reopened] ), [Ticket Count] )
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: 35f291d6-0ed6-5b7c-ba9e-d21b2307bc0e
+
+	measure 'Escalation %' = DIVIDE ( SUM ( Tickets[escalated] ), [Ticket Count] )
+		formatString: 0.0%
+		displayFolder: Service
+		lineageTag: 89001a55-d1b2-5347-b171-1d7f313e87ac
+
+	measure 'Avg CSAT' = AVERAGE ( Tickets[csat] )
+		formatString: 0.00
+		displayFolder: Quality
+		lineageTag: b370f51e-5f4c-509c-af83-f65a4051fa9c
+
+	measure 'Avg Handle Time (min)' = AVERAGE ( Tickets[handle_time_min] )
+		formatString: 0.0
+		displayFolder: Service
+		lineageTag: 926acf79-b21b-59b3-adf2-f20b4f6733df
+
+	measure 'Avg First Response (min)' = AVERAGE ( Tickets[first_response_min] )
+		formatString: 0.0
+		displayFolder: Service
+		lineageTag: 442d2327-b27c-58aa-9d5d-e5bc2012af04
+
+	measure 'Total Cost' = SUM ( Tickets[cost_usd] )
+		formatString: $#,0
+		displayFolder: Cost
+		lineageTag: fa050c50-41b5-5c36-a0fb-965e167ffe88
+
+	measure 'Cost per Ticket' = DIVIDE ( [Total Cost], [Ticket Count] )
+		formatString: $#,0.00
+		displayFolder: Cost
+		lineageTag: c30896f3-2eea-5ee7-8ea9-dace07e7e1f5
+
+	measure 'P1 SLA %' = CALCULATE ( [SLA %], Tickets[priority] = "P1" )
+		formatString: 0.0%
+		displayFolder: Service
+		lineageTag: de8318cc-4ec0-5717-ace5-ba4640e57406
+
+	measure 'Monday Rush Breach %' = CALCULATE ( [Breach %], Tickets[weekday] = "Monday", Tickets[hour] >= 8, Tickets[hour] <= 10 )
+		formatString: 0.0%
+		displayFolder: Staffing
+		lineageTag: 5a7b4817-9aae-5234-8c15-6fdbf059b986
+
+	measure 'Other Weekday Breach %' =
+			CALCULATE (
+				[Breach %],
+				FILTER (
+					ALL ( Tickets[weekday], Tickets[weekday_num], Tickets[hour] ),
+					Tickets[weekday_num] <= 5 && Tickets[hour] >= 7 && Tickets[hour] <= 18
+						&& NOT ( Tickets[weekday_num] = 1 && Tickets[hour] >= 8 && Tickets[hour] <= 10 )
+				)
+			)
+		formatString: 0.0%
+		displayFolder: Staffing
+		lineageTag: d0e52bbd-53e7-5d32-bdc3-b1e3fc9cc1d8
+
+	measure 'Breach Color' = VAR v = [Breach %] RETURN SWITCH ( TRUE (), ISBLANK ( v ), "#FFFFFF", v >= 0.25, "#1E4470", v >= 0.20, "#3D72AD", v >= 0.15, "#6A95C6", v >= 0.10, "#C9D9EC", v >= 0.05, "#E6EEF7", "#FFFFFF" )
+		displayFolder: Staffing
+		lineageTag: e65ce4b2-df88-5f01-a376-a356d0435efd
+
+	measure 'SLA Color' = VAR v = [SLA %] RETURN SWITCH ( TRUE (), ISBLANK ( v ), "#C9D9EC", v >= 0.9, "#9DB9DB", v >= 0.8, "#3D72AD", "#0F2238" )
+		displayFolder: Formatting
+		lineageTag: 4303e5df-85d5-5ab3-8182-cdb1c773e9ea
+
+	measure 'SLA Tint' = VAR v = [SLA %] RETURN SWITCH ( TRUE (), ISBLANK ( v ), "#FFFFFF", v >= 0.9, "#FFFFFF", v >= 0.86, "#E6EEF7", "#C9D9EC" )
+		displayFolder: Formatting
+		lineageTag: 40433760-1af6-593b-b728-dfa87cd0aa86
+
+	measure 'Hours Shade' = VAR r = RANKX ( ALL ( Tickets[category] ), [Agent Hours] ) RETURN SWITCH ( r, 1, "#0F2238", 2, "#16314F", 3, "#1E4470", 4, "#2B5A8F", 5, "#3D72AD", "#5584BC" )
+		displayFolder: Formatting
+		lineageTag: 2a4b8400-66f8-5cf9-838d-8b643ea86c74
+
+	measure 'Breach Font' = IF ( [Breach %] >= 0.2, "#FFFFFF", "#0F2238" )
+		displayFolder: Formatting
+		lineageTag: 054a1b6e-3971-5443-a037-f48f89b21104
+
+	measure 'Reopen Font' = IF ( [Driver Reopen %] >= 0.15, "#FFFFFF", "#0F2238" )
+		displayFolder: Formatting
+		lineageTag: 0ca971f7-340d-54fe-bf43-ec9f07345037
+
+	measure 'Reopen Color' = VAR v = [Driver Reopen %] RETURN SWITCH ( TRUE (), ISBLANK ( v ), "#FFFFFF", v >= 0.3, "#1E4470", v >= 0.15, "#6A95C6", v >= 0.09, "#C9D9EC", "#FFFFFF" )
+		displayFolder: Formatting
+		lineageTag: fd8474a0-4326-57bd-8857-9b2a15f62b0f
+
+	measure 'P1 SLA Target' = 0.8
+		formatString: 0%
+		displayFolder: Service
+		lineageTag: 59b17f1c-337c-587e-87e1-5d7c7c8a7207
+
+	measure 'Gauge Min' = 0
+		formatString: 0%
+		displayFolder: Formatting
+		lineageTag: 8d634b23-5602-5e3a-8cc8-a71ec79346ac
+
+	measure 'Gauge Max' = 1
+		formatString: 0%
+		displayFolder: Formatting
+		lineageTag: 6d63d650-c7cb-5726-b9c9-0d62c88242ff
+
+	measure 'IE Peak Reopen %' = MAXX ( ALL ( dim_date[Month Start] ), [IE Driver Reopen %] )
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: 36987d3f-f094-5490-87d3-81fb3b1b0c60
+
+	measure 'Rows Received' = CALCULATE ( SUM ( DataQuality[Count] ), DataQuality[Step] = 1 )
+		formatString: #,0
+		displayFolder: Data quality
+		lineageTag: dbe42452-e492-54a5-a654-73e8f7a12a15
+
+	measure 'Rows Loaded' = CALCULATE ( SUM ( DataQuality[Count] ), DataQuality[Step] = 7 )
+		formatString: #,0
+		displayFolder: Data quality
+		lineageTag: 3e114481-6962-5c0a-a0e6-aaeacaf0e8ef
+
+	measure 'Defects Fixed' = CALCULATE ( SUM ( DataQuality[Count] ), DataQuality[Step] IN { 2, 3, 4 } )
+		formatString: #,0
+		displayFolder: Data quality
+		lineageTag: 445409e2-dbd8-5642-a81d-96c183802e85
+
+	measure 'Adoption Selected' = SELECTEDVALUE ( 'Portal Adoption'[Adoption], 0.6 )
+		formatString: 0%
+		displayFolder: Business case
+		lineageTag: aed0444a-0eda-57c8-b57c-e192cd5f483f
+
+	measure 'Cost per Agent Minute' = 0.85
+		formatString: $0.00
+		displayFolder: Business case
+		lineageTag: 18190559-1ffb-5c5a-83fd-bdf8adf52616
+
+	measure 'Simple Live Tickets' = CALCULATE ( [Ticket Count], Tickets[simple_request] = 1, KEEPFILTERS ( Tickets[channel] IN { "Phone", "Email" } ) )
+		formatString: #,0
+		displayFolder: Business case
+		lineageTag: 30f379b4-26b2-5d40-bffe-ecb7640d050b
+
+	measure 'Simple Live Hours' = CALCULATE ( [Agent Hours], Tickets[simple_request] = 1, KEEPFILTERS ( Tickets[channel] IN { "Phone", "Email" } ) )
+		formatString: #,0
+		displayFolder: Business case
+		lineageTag: 07490569-99c2-59f6-8732-7b9d2204f87b
+
+	measure 'Portal Minutes (Simple)' = CALCULATE ( [Avg Handle Time (min)], Tickets[simple_request] = 1, Tickets[channel] = "Portal" )
+		formatString: 0.0
+		displayFolder: Business case
+		lineageTag: 700be073-d5cf-5471-a1b7-a79bf88a79c7
+
+	measure 'Hours Saved' = [Adoption Selected] * ( [Simple Live Hours] - [Simple Live Tickets] * [Portal Minutes (Simple)] / 60 )
+		formatString: #,0
+		displayFolder: Business case
+		lineageTag: e8c4e8b6-03ed-51ea-bcaf-247cb2f45864
+
+	measure 'Annual Value' = [Hours Saved] * 60 * [Cost per Agent Minute]
+		formatString: $#,0
+		displayFolder: Business case
+		lineageTag: 1ce57ea6-6a01-5700-a69b-27efa9ce3a88
+
+	measure 'FTE Freed' = DIVIDE ( [Hours Saved], 1880 )
+		formatString: 0.00
+		displayFolder: Business case
+		lineageTag: fe30d4d9-dbaa-529b-a308-d133c84ed45f
+
+	measure 'Driver Reopen %' = CALCULATE ( [Reopen %], Tickets[category] = "Print Driver / Network" )
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: 459487eb-fb20-5f7e-8b0d-5ba907401b76
+
+	measure 'IE Driver Reopen %' = CALCULATE ( [Driver Reopen %], Tickets[region] = "Inland Empire" )
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: 9ed4df2a-8162-561d-b74d-490ca98260a5
+
+	measure 'IE Reopen UCL' =
+			VAR Baseline =
+				ADDCOLUMNS (
+					CALCULATETABLE ( VALUES ( dim_date[Month Start] ), ALL ( dim_date ), dim_date[Date] < DATE ( 2026, 3, 1 ) ),
+					"@rate", VAR m = dim_date[Month Start] RETURN CALCULATE ( [IE Driver Reopen %], ALL ( dim_date ), dim_date[Month Start] = m )
+				)
+			RETURN AVERAGEX ( Baseline, [@rate] ) + 3 * STDEVX.S ( Baseline, [@rate] )
+		formatString: 0.0%
+		displayFolder: Quality
+		lineageTag: e8964d70-8d1b-5993-a6c0-24915c75ccb9
+
+	measure 'IE Months Out of Control' = COUNTROWS ( FILTER ( VALUES ( dim_date[Month Start] ), [IE Driver Reopen %] > [IE Reopen UCL] ) )
+		formatString: 0
+		displayFolder: Quality
+		lineageTag: 35278af1-aacd-5f37-8846-ad6cefc89621
+
+	column Dummy
+		dataType: string
+		isHidden
+		lineageTag: cfe0776a-b73d-535b-9f51-fc8b293f4517
+		summarizeBy: none
+		sourceColumn: Dummy
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Dummy = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

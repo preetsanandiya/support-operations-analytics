@@ -1,0 +1,55 @@
+table DataQuality
+	lineageTag: caf84456-2340-53a8-91d0-669bcfb20d33
+
+	column Step
+		dataType: int64
+		formatString: 0
+		lineageTag: dbffa745-6c06-5327-baae-775ba279296d
+		summarizeBy: none
+		sourceColumn: Step
+
+		annotation SummarizationSetBy = Automatic
+
+	column Check
+		dataType: string
+		lineageTag: c25317ee-c180-5caf-be2f-b254ac50b6b4
+		summarizeBy: none
+		sourceColumn: Check
+
+		annotation SummarizationSetBy = Automatic
+
+	column Count
+		dataType: int64
+		formatString: #,0
+		lineageTag: b6e0fef9-eded-50a0-9d4f-4c64350a2726
+		summarizeBy: none
+		sourceColumn: Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Action
+		dataType: string
+		lineageTag: d9955e1f-4d93-5ef4-baff-03665c906f4e
+		summarizeBy: none
+		sourceColumn: Action
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DataQuality = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Step = Int64.Type, Check = text, Count = Int64.Type, Action = text], {
+				        {1, "Rows received (raw extract)", 48025, "Starting point"},
+				        {2, "Duplicate tickets", 25, "Removed (same ticket_id)"},
+				        {3, "Region names with wrong case", 20, "Standardized to title case"},
+				        {4, "Negative handle times", 15, "Corrected to absolute value"},
+				        {5, "Resolved before created", 0, "Checked; none found"},
+				        {6, "Missing ticket IDs", 0, "Checked; none found"},
+				        {7, "Rows after cleaning", 48000, "Loaded to the model"}
+				    })
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

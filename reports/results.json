@@ -1,0 +1,328 @@
+{
+ "kpis": {
+  "tickets": 48000.0,
+  "sla_attainment": 0.8772083333333334,
+  "first_contact_resolution": 0.5616666666666666,
+  "avg_first_response_min": 39.84084791666667,
+  "avg_handle_time_min": 10.788818749999999,
+  "reopen_rate": 0.053375,
+  "escalation_rate": 0.16445833333333335,
+  "avg_csat": 4.1253777330094215,
+  "cost_per_ticket": 36.943718125,
+  "total_agent_hours": 8631.055
+ },
+ "data_quality": {
+  "rows_in": 48025,
+  "duplicate_rows": 25,
+  "region_case_fixes": 20,
+  "negative_handle_time_fixed": 15,
+  "resolved_before_created": 0,
+  "null_ticket_ids": 0,
+  "csat_response_rate": 0.352,
+  "rows_out": 48000
+ },
+ "business_case": [
+  {
+   "Recommendation": "R1 Self-service portal for supplies & meter reads",
+   "Scope": "13,363 live-agent tickets/yr",
+   "Impact": "830 agent hrs (~0.4 FTE)",
+   "Value": "$42,307/yr"
+  },
+  {
+   "Recommendation": "R2 Monday 7am shift realignment (no new headcount)",
+   "Scope": "4,216 Monday-rush tickets/yr",
+   "Impact": "360 fewer SLA breaches/yr",
+   "Value": "Cost-neutral"
+  },
+  {
+   "Recommendation": "R3 Firmware release gate + reopen alert",
+   "Scope": "94 excess reopens in 3 months",
+   "Impact": "75 reopens avoidable",
+   "Value": "$1,628 per incident"
+  },
+  {
+   "Recommendation": "R4 P1 fast-track dispatch path",
+   "Scope": "2,245 P1 tickets/yr",
+   "Impact": "P1 SLA 53% \u2192 target 80%",
+   "Value": "Customer retention"
+  }
+ ],
+ "r1_hours": 829.5538483945712,
+ "r1_value": 42307.24626812313,
+ "r2_breaches_avoided": 359.82508214066956,
+ "mon_breach": 0.2009013282732448,
+ "rest_breach": 0.11555382302166284,
+ "excess_reopens": 94.05623999999999,
+ "r3_avoidable": 75.244992,
+ "simple_live_tickets": 13363,
+ "simple_live_hours": 1604.2816666666665,
+ "trend": [
+  {
+   "month": "2025-10",
+   "tickets": 4165,
+   "sla_attainment": 0.8771,
+   "fcr": 0.5681,
+   "reopen_rate": 0.0523,
+   "avg_csat": 4.13,
+   "volume_mom_pct": NaN
+  },
+  {
+   "month": "2025-11",
+   "tickets": 3830,
+   "sla_attainment": 0.8768,
+   "fcr": 0.5668,
+   "reopen_rate": 0.052,
+   "avg_csat": 4.13,
+   "volume_mom_pct": -8.0
+  },
+  {
+   "month": "2025-12",
+   "tickets": 4276,
+   "sla_attainment": 0.8749,
+   "fcr": 0.5573,
+   "reopen_rate": 0.0477,
+   "avg_csat": 4.15,
+   "volume_mom_pct": 11.6
+  },
+  {
+   "month": "2026-01",
+   "tickets": 4037,
+   "sla_attainment": 0.8761,
+   "fcr": 0.5573,
+   "reopen_rate": 0.0493,
+   "avg_csat": 4.11,
+   "volume_mom_pct": -5.6
+  },
+  {
+   "month": "2026-02",
+   "tickets": 3645,
+   "sla_attainment": 0.8779,
+   "fcr": 0.5572,
+   "reopen_rate": 0.0551,
+   "avg_csat": 4.09,
+   "volume_mom_pct": -9.7
+  },
+  {
+   "month": "2026-03",
+   "tickets": 4148,
+   "sla_attainment": 0.8742,
+   "fcr": 0.5571,
+   "reopen_rate": 0.062,
+   "avg_csat": 4.11,
+   "volume_mom_pct": 13.8
+  },
+  {
+   "month": "2026-04",
+   "tickets": 3967,
+   "sla_attainment": 0.8727,
+   "fcr": 0.5778,
+   "reopen_rate": 0.0655,
+   "avg_csat": 4.1,
+   "volume_mom_pct": -4.4
+  },
+  {
+   "month": "2026-05",
+   "tickets": 3910,
+   "sla_attainment": 0.879,
+   "fcr": 0.5552,
+   "reopen_rate": 0.0552,
+   "avg_csat": 4.13,
+   "volume_mom_pct": -1.4
+  },
+  {
+   "month": "2026-06",
+   "tickets": 4123,
+   "sla_attainment": 0.8812,
+   "fcr": 0.5515,
+   "reopen_rate": 0.0519,
+   "avg_csat": 4.12,
+   "volume_mom_pct": 5.4
+  },
+  {
+   "month": "2026-07",
+   "tickets": 4063,
+   "sla_attainment": 0.8745,
+   "fcr": 0.5629,
+   "reopen_rate": 0.0468,
+   "avg_csat": 4.12,
+   "volume_mom_pct": -1.5
+  },
+  {
+   "month": "2026-08",
+   "tickets": 3846,
+   "sla_attainment": 0.8768,
+   "fcr": 0.5611,
+   "reopen_rate": 0.0507,
+   "avg_csat": 4.15,
+   "volume_mom_pct": -5.3
+  },
+  {
+   "month": "2026-09",
+   "tickets": 3990,
+   "sla_attainment": 0.8857,
+   "fcr": 0.5679,
+   "reopen_rate": 0.0524,
+   "avg_csat": 4.17,
+   "volume_mom_pct": 3.7
+  }
+ ],
+ "reopen_ie": {
+  "2025-10": 0.0437,
+  "2025-11": 0.0619,
+  "2025-12": 0.0993,
+  "2026-01": 0.0538,
+  "2026-02": 0.0547,
+  "2026-03": 0.3262,
+  "2026-04": 0.4095,
+  "2026-05": 0.2132,
+  "2026-06": 0.0526,
+  "2026-07": 0.032,
+  "2026-08": 0.0738,
+  "2026-09": 0.0507
+ },
+ "heat": [
+  {
+   "weekday": "Monday",
+   "7": 0.1197,
+   "8": 0.1982,
+   "9": 0.1992,
+   "10": 0.2057,
+   "11": 0.1323,
+   "12": 0.1208,
+   "13": 0.1151,
+   "14": 0.1291,
+   "15": 0.1196,
+   "16": 0.1328,
+   "17": 0.0956,
+   "18": 0.1176
+  },
+  {
+   "weekday": "Tuesday",
+   "7": 0.1169,
+   "8": 0.112,
+   "9": 0.1295,
+   "10": 0.1203,
+   "11": 0.1119,
+   "12": 0.1191,
+   "13": 0.11,
+   "14": 0.0991,
+   "15": 0.1234,
+   "16": 0.1111,
+   "17": 0.145,
+   "18": 0.1471
+  },
+  {
+   "weekday": "Wednesday",
+   "7": 0.11,
+   "8": 0.1125,
+   "9": 0.1262,
+   "10": 0.1223,
+   "11": 0.1375,
+   "12": 0.1024,
+   "13": 0.1231,
+   "14": 0.1161,
+   "15": 0.1234,
+   "16": 0.134,
+   "17": 0.0917,
+   "18": 0.1121
+  },
+  {
+   "weekday": "Thursday",
+   "7": 0.1344,
+   "8": 0.1136,
+   "9": 0.1173,
+   "10": 0.1205,
+   "11": 0.1191,
+   "12": 0.0934,
+   "13": 0.1305,
+   "14": 0.1257,
+   "15": 0.0976,
+   "16": 0.1218,
+   "17": 0.0851,
+   "18": 0.1333
+  },
+  {
+   "weekday": "Friday",
+   "7": 0.0793,
+   "8": 0.0946,
+   "9": 0.1138,
+   "10": 0.1168,
+   "11": 0.1043,
+   "12": 0.0812,
+   "13": 0.1074,
+   "14": 0.0766,
+   "15": 0.1295,
+   "16": 0.0855,
+   "17": 0.1089,
+   "18": 0.0732
+  }
+ ],
+ "mix": [
+  {
+   "category": "Meter Read / Billing",
+   "Email": 140.9,
+   "Phone": 557.1,
+   "Portal": 19.8
+  },
+  {
+   "category": "Paper Jam / Hardware Fault",
+   "Email": 684.1,
+   "Phone": 1534.3,
+   "Portal": 259.7
+  },
+  {
+   "category": "Print Driver / Network",
+   "Email": 668.4,
+   "Phone": 1477.1,
+   "Portal": 240.9
+  },
+  {
+   "category": "Scan-to-Email / Software",
+   "Email": 353.9,
+   "Phone": 857.8,
+   "Portal": 138.3
+  },
+  {
+   "category": "Service Dispatch Request",
+   "Email": 214.2,
+   "Phone": 475.7,
+   "Portal": 72.3
+  },
+  {
+   "category": "Toner / Supplies Reorder",
+   "Email": 188.0,
+   "Phone": 718.3,
+   "Portal": 30.3
+  }
+ ],
+ "priority": [
+  {
+   "priority": "P1",
+   "sla_target_hours": 4,
+   "tickets": 2245,
+   "sla_attainment": 0.5252,
+   "avg_resolution_hours": 5.38
+  },
+  {
+   "priority": "P2",
+   "sla_target_hours": 8,
+   "tickets": 11161,
+   "sla_attainment": 0.7216,
+   "avg_resolution_hours": 5.23
+  },
+  {
+   "priority": "P3",
+   "sla_target_hours": 24,
+   "tickets": 23305,
+   "sla_attainment": 0.9302,
+   "avg_resolution_hours": 6.77
+  },
+  {
+   "priority": "P4",
+   "sla_target_hours": 72,
+   "tickets": 11289,
+   "sla_attainment": 0.9917,
+   "avg_resolution_hours": 8.46
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "rows_in": 48025,
+ "duplicate_rows": 25,
+ "region_case_fixes": 20,
+ "negative_handle_time_fixed": 15,
+ "resolved_before_created": 0,
+ "null_ticket_ids": 0,
+ "csat_response_rate": 0.352,
+ "rows_out": 48000
+}

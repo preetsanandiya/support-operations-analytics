@@ -1,0 +1,23 @@
+table 'Portal Adoption'
+	lineageTag: f1912613-4335-5374-b1ec-42f558c34d24
+
+	column Adoption
+		dataType: double
+		formatString: 0%
+		lineageTag: 66083110-7289-52c1-8c94-442b5451c15b
+		summarizeBy: none
+		sourceColumn: Adoption
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Portal Adoption' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromList({0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0}, Splitter.SplitByNothing(), {"Adoption"}),
+				    Typed = Table.TransformColumnTypes(Source, {{"Adoption", type number}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
+

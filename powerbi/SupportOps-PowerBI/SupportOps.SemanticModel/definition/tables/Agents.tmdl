@@ -1,0 +1,40 @@
+table Agents
+	lineageTag: e4b2f0e0-6f52-552d-ab44-311a0c14ba23
+
+	column agent_id
+		dataType: string
+		lineageTag: c8f273ef-55f7-5911-b7a9-e3ac650b80b1
+		summarizeBy: none
+		sourceColumn: agent_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_tier
+		dataType: string
+		lineageTag: 0d7ea55c-5e06-5986-8861-2505212dacc0
+		summarizeBy: none
+		sourceColumn: agent_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift
+		dataType: string
+		lineageTag: 08b71478-d27c-5f47-8c99-641c9c6ef8ca
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Agents = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "agents.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"agent_id", type text}, {"tier", type text}, {"shift", type text}}, "en-US"),
+				    Renamed = Table.RenameColumns(Typed, {{"tier", "agent_tier"}})
+				in
+				    Renamed
+
+	annotation PBI_ResultType = Table
+

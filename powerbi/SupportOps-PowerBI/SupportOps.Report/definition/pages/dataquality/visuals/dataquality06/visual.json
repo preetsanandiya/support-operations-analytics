@@ -1,0 +1,161 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "dataquality06",
+  "position": {
+    "x": 650,
+    "y": 186,
+    "z": 6,
+    "width": 610,
+    "height": 330,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "KPI definitions",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "SLA attainment: tickets resolved within the priority's SLA ÷ tickets",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "First-contact resolution: tickets solved without a follow-up contact ÷ tickets",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Reopen rate: tickets reopened after resolution ÷ tickets",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Escalation rate: tickets escalated to Tier 2 ÷ tickets",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Avg handle time: average agent minutes per ticket",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Cost per ticket: loaded agent cost ÷ tickets",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "CSAT: average 1-5 survey score; about 35% of customers respond",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#0F2238"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

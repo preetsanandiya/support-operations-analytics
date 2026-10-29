@@ -1,0 +1,256 @@
+table Tickets
+	lineageTag: 10c7cbea-cca0-59da-8949-74ccad1bf7cd
+
+	column ticket_id
+		dataType: string
+		lineageTag: 1140abc1-41af-549b-a292-a343370658fa
+		summarizeBy: none
+		sourceColumn: ticket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_at
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 4d54db1b-d493-5a80-ae22-b077cae8e714
+		summarizeBy: none
+		sourceColumn: created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: abbe5488-87ce-5fd2-abb6-ddb20114ed76
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 663d1cd4-1c0c-5e07-9178-2669ced91697
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_line
+		dataType: string
+		lineageTag: 9589d78a-c79f-51c0-af0a-7a562009482c
+		summarizeBy: none
+		sourceColumn: product_line
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 256d1e34-1ad7-57de-9e65-132dfa0a0017
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority
+		dataType: string
+		lineageTag: f078a00e-0106-552d-a1a5-0b7b99a76948
+		summarizeBy: none
+		sourceColumn: priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_target_hours
+		dataType: int64
+		formatString: 0
+		lineageTag: 06096ccb-5e3a-596c-8114-f942615689e2
+		summarizeBy: none
+		sourceColumn: sla_target_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_response_target_min
+		dataType: int64
+		formatString: 0
+		lineageTag: 9ee1fd82-c9f3-5a29-8923-8cc3f13c0338
+		summarizeBy: none
+		sourceColumn: first_response_target_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_response_min
+		dataType: double
+		formatString: #,0.0
+		lineageTag: d8441ee5-819e-5649-8f65-4a6a369390e8
+		summarizeBy: none
+		sourceColumn: first_response_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column handle_time_min
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 9a6ff36c-22f9-5f07-97c9-75bb25147e8a
+		summarizeBy: none
+		sourceColumn: handle_time_min
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier
+		dataType: string
+		lineageTag: c1b16028-40bd-561d-9b2c-079cb946a299
+		summarizeBy: none
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_id
+		dataType: string
+		lineageTag: 50074ff6-fb13-520f-b408-3b4053bdc539
+		summarizeBy: none
+		sourceColumn: agent_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolution_hours
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e3e3dc5f-a835-5f9f-8c9c-ce6cd6ec735f
+		summarizeBy: none
+		sourceColumn: resolution_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column csat
+		dataType: double
+		formatString: 0.0
+		lineageTag: 95ffa2b4-94c6-503e-bf3a-474cac159b88
+		summarizeBy: none
+		sourceColumn: csat
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_usd
+		dataType: double
+		formatString: $#,0.00
+		lineageTag: 7f022b70-9c83-5374-900e-df5f145c72ab
+		summarizeBy: none
+		sourceColumn: cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday
+		dataType: string
+		lineageTag: 01dc62d3-c522-5feb-a6df-bcf234260589
+		summarizeBy: none
+		sourceColumn: weekday
+		sortByColumn: weekday_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 64c9726e-399d-5fde-a854-594351e5f811
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		isHidden
+		lineageTag: ee9bf719-f877-5260-9387-2490b6eaddd8
+		summarizeBy: none
+		sourceColumn: created_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column weekday_num
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: cc0abec4-bc31-520a-bb06-6ad96bbaeffd
+		summarizeBy: none
+		sourceColumn: weekday_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column escalated
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 78cde12e-d307-535f-adc7-7d5646e69a8e
+		summarizeBy: none
+		sourceColumn: escalated
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_contact_resolved
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 39f8a28e-da1e-5c73-be12-1c97e220fe48
+		summarizeBy: none
+		sourceColumn: first_contact_resolved
+
+		annotation SummarizationSetBy = Automatic
+
+	column field_dispatch
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: b900c4fb-35d7-5a9a-a139-24ecf2057222
+		summarizeBy: none
+		sourceColumn: field_dispatch
+
+		annotation SummarizationSetBy = Automatic
+
+	column reopened
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: eb1a03a5-3fb7-5c80-93d0-4d44b0d9ab29
+		summarizeBy: none
+		sourceColumn: reopened
+
+		annotation SummarizationSetBy = Automatic
+
+	column sla_met
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: eeb08d95-f6cc-53e8-9f05-6174c358e1ac
+		summarizeBy: none
+		sourceColumn: sla_met
+
+		annotation SummarizationSetBy = Automatic
+
+	column simple_request
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 59cdbbe9-d125-5c67-892d-6a4f0f0e8812
+		summarizeBy: none
+		sourceColumn: simple_request
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tickets = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "tickets_clean.csv"), [Delimiter = ",", Columns = 26, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Dropped = Table.RemoveColumns(Promoted, {"resolved_at", "month"}),
+				    Blanks = Table.TransformColumns(Dropped, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"ticket_id", type text}, {"created_at", type datetime}, {"channel", type text}, {"region", type text}, {"product_line", type text}, {"category", type text}, {"priority", type text}, {"sla_target_hours", Int64.Type}, {"first_response_target_min", Int64.Type}, {"first_response_min", type number}, {"handle_time_min", type number}, {"escalated", type logical}, {"tier", type text}, {"agent_id", type text}, {"first_contact_resolved", type logical}, {"field_dispatch", type logical}, {"resolution_hours", type number}, {"reopened", type logical}, {"sla_met", type logical}, {"csat", type number}, {"cost_usd", type number}, {"weekday", type text}, {"hour", Int64.Type}, {"simple_request", type logical}}, "en-US"),
+				    Flags = Table.TransformColumns(Typed, List.Transform({"escalated", "first_contact_resolved", "field_dispatch", "reopened", "sla_met", "simple_request"}, (c) => {c, each if _ = true then 1 else 0, Int64.Type})),
+				    CreatedDate = Table.AddColumn(Flags, "created_date", each DateTime.Date([created_at]), type date),
+				    WeekdayNum = Table.AddColumn(CreatedDate, "weekday_num", each Date.DayOfWeek([created_at], Day.Monday) + 1, Int64.Type)
+				in
+				    WeekdayNum
+
+	annotation PBI_ResultType = Table
+
